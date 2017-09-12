@@ -1,0 +1,65 @@
+---
+title: "Homework 1"
+author: "Ke Ding"
+date: "9/12/2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Problem1:
+part a)
+The Euclidean distance are summerized below: 
+ob1: 3.000000
+ob2: 2.000000
+ob3: 3.162278
+ob4: 2.236068
+ob5: 1.414214
+ob6: 1.732051
+
+part b)
+Perform the knn when k=1, it is green since ob5 is closest to test data, and it is green.
+
+part c)
+Perform the knn when k=3, it is red, since it calculated the nearest 3 neighbors, which are red, green, and red for ob2, 5, and 6 respectively.
+
+part d)
+If the system is highly non-linear, that means it is very curvy and we need a flexible curve to capture those small variances, then small k is feasible for us. choose k from 1 to 10. 
+
+
+
+```{r hw1}
+library(class)
+ob1<-cbind(0,3,0, "Red")
+ob2<-cbind(2,0,0, "Red")
+ob3<-cbind(0,1,3, "Red")
+ob4<-cbind(0,1,2, "Green")
+ob5<-cbind(-1,0,1, "Green")
+ob6<-cbind(1,1,1, "Red")
+data1<-rbind(ob1,ob2,ob3,ob4,ob5,ob6)
+te_p<-cbind(0,0,0)
+eucl_dis<-rdist(data1[,1:3],te_p)
+train1<-data1[,1:3]
+class<-data1[,4]
+knn1<-knn(train1,te_p,class, k=1)
+knn2<-knn(train1,te_p,class, k=3)
+# eucl_dis_1<-as.numeric(dist(rbind(data[1,1:3],te_p)))
+# eucl_dis_2<-as.numeric(dist(rbind(data[1,1:3],te_p)))
+# eucl_dis_3<-as.numeric(dist(rbind(data[1,1:3],te_p)))
+# eucl_dis_4<-as.numeric(dist(rbind(data[1,1:3],te_p)))
+# eucl_dis_5<-as.numeric(dist(rbind(data[1,1:3],te_p)))
+# eucl_dis_6<-as.numeric(dist(rbind(data[1,1:3],te_p)))
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
